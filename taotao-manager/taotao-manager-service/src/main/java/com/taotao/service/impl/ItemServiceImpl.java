@@ -31,21 +31,21 @@ public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private TbItemDescMapper itemDescMapper;
 	
-/*	
+	/*
 	 * 通过id获取商品详情
-	 
+	 */
 	public TaotaoResult getItemById(String id) {
 		TbItem item = itemMapper.selectByPrimaryKey(Long.parseLong(id));
 		return TaotaoResult.ok(item);
 	}
 	
-	
+	/*
 	 * 通过id获取商品详情
-	 
+	 */
 	public TaotaoResult getItemDescById(String id) {
 		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(Long.parseLong(id));
 		return TaotaoResult.ok(itemDesc);
-	}*/
+	}
 	
 	
 	/*
@@ -65,6 +65,7 @@ public class ItemServiceImpl implements ItemService {
 		result.setTotal(pageInfo.getTotal());
 		return result;
 	}
+	
 	/*
 	 * 添加商品
 	 */
@@ -93,6 +94,7 @@ public class ItemServiceImpl implements ItemService {
 		
 			return taotaoResult.ok();
 	}
+	
 	/*
 	 * 删除商品
 	 */
@@ -105,6 +107,20 @@ public class ItemServiceImpl implements ItemService {
 		}
 		return TaotaoResult.ok();
 		
+	}
+
+	/*
+	 * 编辑商品
+	 */
+	public TaotaoResult updateItem(TbItem item, String desc) {
+		item.setUpdated(new Date());
+		TbItemDesc itemDesc = new TbItemDesc();
+		itemDesc.setItemId(item.getId());
+		itemDesc.setItemDesc(desc);
+		itemDesc.setUpdated(new Date());
+		itemMapper.updateByPrimaryKeySelective(item);
+		itemDescMapper.updateByPrimaryKeySelective(itemDesc);
+		return TaotaoResult.ok();
 	}
 
 }
