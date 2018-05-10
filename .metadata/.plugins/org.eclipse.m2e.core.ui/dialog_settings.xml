@@ -57,9 +57,12 @@
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
-	<section name="MavenProjectImportWizardPage">
-		<list key="rootDirectory">
-			<item value="D:\repository\taotao\taotao-manager"/>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="taotao-manager-service"/>
+			<item value="taotao-manager-interface"/>
+			<item value="taotao-manager-pojo"/>
+			<item value="taotao-manager-dao"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -70,12 +73,9 @@
 			<item value="[name]"/>
 		</list>
 	</section>
-	<section name="MavenModuleWizardParentPage">
-		<list key="moduleName">
-			<item value="taotao-manager-service"/>
-			<item value="taotao-manager-interface"/>
-			<item value="taotao-manager-pojo"/>
-			<item value="taotao-manager-dao"/>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\repository\taotao\taotao-manager"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -93,8 +93,9 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="taotao-common"/>
+			<item value="taotao-portal-web"/>
 			<item value="taotao-parent"/>
+			<item value="taotao-common"/>
 			<item value="taotao-manager-web"/>
 			<item value="taotao-manager-service"/>
 			<item value="taotao-manager"/>

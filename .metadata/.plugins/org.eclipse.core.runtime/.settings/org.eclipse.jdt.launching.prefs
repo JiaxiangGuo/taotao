@@ -1,2 +1,5 @@
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1525583543527.java.specification.name=Java Platform API Specification
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1525583543527.java.specification.version=1.7
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1525583543527.java.version=1.7.0_72
 eclipse.preferences.version=1
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1525609593135" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1525583543527" name\="eclipse" path\="D\:\\eclipse"/>\r\n<vm id\="1525609593135" name\="jdk1.7.0_72" path\="C\:\\Program Files (x86)\\Java\\jdk1.7.0_72"/>\r\n</vmType>\r\n</vmSettings>\r\n
