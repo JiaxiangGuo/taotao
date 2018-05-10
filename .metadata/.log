@@ -9146,3 +9146,9 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.core.resources 4 380 2018-05-10 10:47:23.083
 !MESSAGE The resource tree is locked for modifications.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-05-10 15:57:22.298
+!MESSAGE The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-05-10 16:00:17.259
+!MESSAGE The artifact org.apache.commons:commons-io:jar:1.3.2 has been relocated to commons-io:commons-io:jar:1.3.2
