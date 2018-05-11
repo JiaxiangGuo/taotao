@@ -1,0 +1,28 @@
+package com.taotao.portal.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+/**
+ * 首页展示
+ * @author Guojiaxiang
+ *
+ */
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.taotao.content.service.ContentService;
+/*
+ * 首页展示
+ */
+
+@Controller
+public class IndexController {
+	@Autowired
+	private ContentService contentService;
+	@RequestMapping("/index")
+	public String showIndex(){
+		//根据CategoryId查询轮播图内容列表
+		contentService.getContentByCategoryId(categoryId)
+		
+		return "index";
+	}
+}

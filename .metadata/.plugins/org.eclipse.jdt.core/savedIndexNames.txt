@@ -46,7 +46,6 @@ INDEX VERSION 1.127+D:\repository\taotao\.metadata\.plugins\org.eclipse.jdt.core
 1191401.index
 3438563685.index
 4061237389.index
-3942424300.index
 2558514455.index
 210318725.index
 4273401340.index

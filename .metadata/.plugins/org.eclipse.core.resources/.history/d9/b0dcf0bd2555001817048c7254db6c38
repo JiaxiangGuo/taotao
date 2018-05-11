@@ -1,0 +1,41 @@
+package com.taotao.portal.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+/**
+ * 首页展示
+ * @author Guojiaxiang
+ *
+ */
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.taotao.content.service.ContentService;
+import com.taotao.pojo.TbContent;
+import com.taotao.portal.pojo.AD1Node;
+/*
+ * 首页展示
+ */
+
+@Controller
+public class IndexController {
+	@Value("${AD1_CATEGORY_ID}")
+	private Long AD1_CATEGORY_ID;
+	
+	@Autowired
+	private ContentService contentService;
+	@RequestMapping("/index")
+	public String showIndex(){
+		//根据CategoryId查询轮播图内容列表
+		List<TbContent> contentList = contentService.getContentByCategoryId(AD1_CATEGORY_ID);
+		List<AD1Node> ad1Nodes = new ArrayList<>();
+		for (TbContent content : contentList) {
+			AD1Node node = new AD1Node();
+			
+		}
+		return "index";
+	}
+}

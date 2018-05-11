@@ -72,4 +72,10 @@ public class ContentServiceImpl implements ContentService {
 		ContentServiceImpl contentServiceImpl = new ContentServiceImpl();
 		contentServiceImpl.getContentListByCategoryId(89, 1, 20);
 	}*/
+	@Override
+	public List<TbContent> getContentByCategoryId(long categoryId) {
+		TbContentExample example = new TbContentExample();
+		example.createCriteria().andCategoryIdEqualTo(categoryId);
+		return contentMapper.selectByExample(example);
+	}
 }
