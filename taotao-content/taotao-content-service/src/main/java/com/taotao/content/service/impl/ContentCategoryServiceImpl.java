@@ -7,13 +7,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.EasyUITreeNode;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.content.service.ContentCategoryService;
 import com.taotao.mapper.TbContentCategoryMapper;
+import com.taotao.mapper.TbContentMapper;
+import com.taotao.pojo.TbContent;
 import com.taotao.pojo.TbContentCategory;
 import com.taotao.pojo.TbContentCategoryExample;
 import com.taotao.pojo.TbContentCategoryExample.Criteria;
+import com.taotao.pojo.TbContentExample;
 import com.taotao.utils.IDUtils;
 /**
  * 内容分类管理
@@ -25,6 +31,8 @@ public class ContentCategoryServiceImpl implements ContentCategoryService{
 
 	@Autowired
 	private TbContentCategoryMapper contentCategoryMapper;
+	@Autowired
+	private TbContentMapper contentMapper;
 	/*
 	 * 获取分类列表
 	 */
@@ -66,5 +74,33 @@ public class ContentCategoryServiceImpl implements ContentCategoryService{
 		contentCategoryMapper.updateByPrimaryKeySelective(category);
 		return TaotaoResult.ok(contentCategory);
 	}
+
+	/*
+	 * 修改内容分类
+	 */
+	public void editContentCategory(TbContentCategory contentCategory) {
+		contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+	}
+
+	/*
+	 * 删除内容分类
+	 */
+	public TaotaoResult delContentCategory(long id) {
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andIdEqualTo(id);
+		List<TbContentCategory> category = contentCategoryMapper.selectByExample(example);
+		contentCategoryMapper.deleteByExample(example);
+		TbContentCategoryExample example1 = new TbContentCategoryExample();
+		Criteria criteria1 = example1.createCriteria();
+		criteria1.andParentIdEqualTo(category.get(0).getId());
+		List<TbContentCategory> list = contentCategoryMapper.selectByExample(example1);
+		for (TbContentCategory tbContentCategory : list) {
+			contentCategoryMapper.deleteByPrimaryKey(tbContentCategory.getId());
+		}
+		return TaotaoResult.ok();
+	}
+
+
 
 }

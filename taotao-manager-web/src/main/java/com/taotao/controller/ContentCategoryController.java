@@ -17,16 +17,39 @@ import com.taotao.pojo.TbContentCategory;
 public class ContentCategoryController {
 	@Autowired
 	private ContentCategoryService contentCategoryService;
-	
+	/*
+	 * 查询内容分类列表
+	 */
 	@RequestMapping("/content/category/list")
 	@ResponseBody
 	public List<EasyUITreeNode> getContentCategoryList(@RequestParam(value="id", defaultValue="0") long parentId){
 		return contentCategoryService.getContentCategoryList(parentId);
 	}
 	
+	/*
+	 * 创建内容分类
+	 */
 	@RequestMapping("/content/category/create")
 	@ResponseBody
 	public TaotaoResult addContentCategory(TbContentCategory contentCategory){
 		return contentCategoryService.addContentCategory(contentCategory);
 	}
+	
+	/*
+	 * 编辑内容分类
+	 */
+	@RequestMapping("/content/category/update")
+	public void editContentCategory(TbContentCategory contentCategory){
+		contentCategoryService.editContentCategory(contentCategory);
+	}
+	
+	/*
+	 * 删除内容分类
+	 */
+	@RequestMapping("/content/category/delete")
+	@ResponseBody
+	public TaotaoResult addContentCategory(long id){
+		return contentCategoryService.delContentCategory(id);
+	}
+	
 }

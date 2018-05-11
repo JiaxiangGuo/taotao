@@ -3,8 +3,8 @@
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1525583858554_0" label="taotao-manager" name="taotao-manager">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/taotao-manager-pojo" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/taotao-manager-dao" type="4"/>
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/taotao-manager-interface" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/taotao-manager-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/taotao-manager-interface" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1525588375142_1" label="Window Working Set" name="Aggregate for window 1525588375141"/>
 </workingSetManager>

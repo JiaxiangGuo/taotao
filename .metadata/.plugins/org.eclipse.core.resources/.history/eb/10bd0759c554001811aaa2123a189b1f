@@ -1,0 +1,123 @@
+package com.taotao.content.service.impl;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.common.pojo.EasyUITreeNode;
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.content.service.ContentCategoryService;
+import com.taotao.mapper.TbContentCategoryMapper;
+import com.taotao.mapper.TbContentMapper;
+import com.taotao.pojo.TbContent;
+import com.taotao.pojo.TbContentCategory;
+import com.taotao.pojo.TbContentCategoryExample;
+import com.taotao.pojo.TbContentCategoryExample.Criteria;
+import com.taotao.pojo.TbContentExample;
+import com.taotao.utils.IDUtils;
+/**
+ * 内容分类管理
+ * @author Guojiaxiang
+ *
+ */
+@Service
+public class ContentCategoryServiceImpl implements ContentCategoryService{
+
+	@Autowired
+	private TbContentCategoryMapper contentCategoryMapper;
+	@Autowired
+	private TbContentMapper contentMapper;
+	/*
+	 * 获取分类列表
+	 */
+	public List<EasyUITreeNode> getContentCategoryList(long parentId) {
+		//根据parentId查询子节点列表
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		//设置查询条件
+		Criteria criteria = example.createCriteria();
+		criteria.andParentIdEqualTo(parentId);
+		//执行查询
+		List<TbContentCategory> list = contentCategoryMapper.selectByExample(example);
+		//将
+		List<EasyUITreeNode> resultList = new ArrayList<>();
+		for (TbContentCategory contentCategory : list) {
+			EasyUITreeNode node = new EasyUITreeNode();
+			node.setId(contentCategory.getId());
+			node.setText(contentCategory.getName());
+			node.setState(contentCategory.getIsParent()?"closed":"open");
+			resultList.add(node);
+		}
+		
+		return resultList;
+	}
+	
+	/*
+	 * 添加内容分类
+	 */
+	public TaotaoResult addContentCategory(TbContentCategory contentCategory) {
+		contentCategory.setId(IDUtils.getItemId());
+		contentCategory.setIsParent(false);
+		contentCategory.setSortOrder(1);
+		contentCategory.setStatus(1);
+		contentCategory.setCreated(new Date());
+		contentCategory.setUpdated(new Date());
+		contentCategoryMapper.insert(contentCategory);
+		TbContentCategory category = new TbContentCategory();
+		category.setId(contentCategory.getParentId());
+		category.setIsParent(true);
+		contentCategoryMapper.updateByPrimaryKeySelective(category);
+		return TaotaoResult.ok(contentCategory);
+	}
+
+	/*
+	 * 修改内容分类
+	 */
+	public void editContentCategory(TbContentCategory contentCategory) {
+		contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+	}
+
+	/*
+	 * 删除内容分类
+	 */
+	public TaotaoResult delContentCategory(long id) {
+		TbContentCategoryExample example = new TbContentCategoryExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andIdEqualTo(id);
+		List<TbContentCategory> category = contentCategoryMapper.selectByExample(example);
+		contentCategoryMapper.deleteByExample(example);
+		TbContentCategoryExample example1 = new TbContentCategoryExample();
+		Criteria criteria1 = example1.createCriteria();
+		criteria1.andParentIdEqualTo(category.get(0).getId());
+		List<TbContentCategory> list = contentCategoryMapper.selectByExample(example1);
+		for (TbContentCategory tbContentCategory : list) {
+			contentCategoryMapper.deleteByPrimaryKey(tbContentCategory.getId());
+		}
+		return TaotaoResult.ok();
+	}
+
+	/*
+	 *分页分类内容
+	 */
+	public EasyUIDataGridResult getContentListByCategoryId(long categoryId, int page, int rows) {
+		//设置分页信息
+		PageHelper.startPage(page, rows);
+		//执行查询
+		TbContentExample example = new TbContentExample();
+		example.createCriteria().andCategoryIdEqualTo(categoryId);
+		List<TbContent> list = contentMapper.selectByExample(example);
+		//取查询结果
+		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		result.setRows(list);
+		result.setTotal(pageInfo.getTotal());
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,35 @@
+package com.taotao.content.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taotao.common.pojo.EasyUIDataGridResult;
+import com.taotao.content.service.ContentService;
+import com.taotao.pojo.TbContent;
+import com.taotao.pojo.TbContentExample;
+
+@Service
+public class ContentServiceImpl implements ContentService {
+
+	/*
+	 *分页查询分类内容
+	 */
+	public EasyUIDataGridResult getContentListByCategoryId(long categoryId, int page, int rows) {
+		//设置分页信息
+		PageHelper.startPage(page, rows);
+		//执行查询
+		TbContentExample example = new TbContentExample();
+		example.createCriteria().andCategoryIdEqualTo(categoryId);
+		List<TbContent> list = contentMapper.selectByExample(example);
+		//取查询结果
+		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		result.setRows(list);
+		result.setTotal(pageInfo.getTotal());
+		
+		return result;
+	}
+}
