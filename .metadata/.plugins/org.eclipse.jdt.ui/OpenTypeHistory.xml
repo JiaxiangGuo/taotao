@@ -4,4 +4,6 @@
 <typeInfo handle="=taotao-content-interface/src\/main\/java&lt;com.taotao.content.service{ContentService.java[ContentService" modifiers="513" timestamp="1526103165303"/>
 <typeInfo handle="=taotao-common/D:\/eclipse\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1522571617926"/>
 <typeInfo handle="=taotao-search-interface/src\/main\/java&lt;com.taotao.search.service{SearchItemService.java[SearchItemService" modifiers="513" timestamp="1526222549166"/>
+<typeInfo handle="=taotao-search-interface/src\/main\/java&lt;com.taotao.search.service{SearchService.java[SearchService" modifiers="513" timestamp="1526279720531"/>
+<typeInfo handle="=taotao-search-service/src\/main\/java&lt;com.taotao.search.mapper{SearchItemMapper.java[SearchItemMapper" modifiers="513" timestamp="1526218660900"/>
 </typeInfoHistroy>
