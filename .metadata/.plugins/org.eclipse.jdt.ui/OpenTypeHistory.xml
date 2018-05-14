@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
 <typeInfo handle="=taotao-manager-interface/src\/main\/java&lt;com.taotao.service{ItemService.java[ItemService" modifiers="513" timestamp="1525828633536"/>
-<typeInfo handle="=taotao-content-interface/src\/main\/java&lt;com.taotao.content.service{ContentService.java[ContentService" modifiers="513" timestamp="1526044545523"/>
+<typeInfo handle="=taotao-content-interface/src\/main\/java&lt;com.taotao.content.service{ContentService.java[ContentService" modifiers="513" timestamp="1526103165303"/>
+<typeInfo handle="=taotao-common/D:\/eclipse\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1522571617926"/>
+<typeInfo handle="=taotao-search-interface/src\/main\/java&lt;com.taotao.search.service{SearchItemService.java[SearchItemService" modifiers="513" timestamp="1526222549166"/>
 </typeInfoHistroy>

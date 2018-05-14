@@ -1,0 +1,31 @@
+package com.taotao.search.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.search.mapper.SearchItemMapper;
+import com.taotao.search.service.SearchItemService;
+/**
+ * 商品数据导入索引库
+ * @author Guojiaxiang
+ *
+ */
+@Service
+public class SearchItemServiceImpl implements SearchItemService {
+	@Autowired
+	private SearchItemMapper searchItemMapper;
+	
+	public TaotaoResult importItemsToIndex() {
+		//查询所有商品数据
+		searchItemMapper
+		//遍历商品数据，添加到索引库
+		//创建文档对象
+		//向文档中添加域
+		//把文档写入索引库
+		//提交
+		//返回添加成功
+		return null;
+	}
+
+}

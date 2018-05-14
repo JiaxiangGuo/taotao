@@ -41,13 +41,10 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="groupId">
-			<item value="com.taotao"/>
 		</list>
 		<list key="package">
-			<item value="org.taotao.content.service"/>
 		</list>
 		<list key="artifactId">
-			<item value="taotao-content-service"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -61,9 +58,16 @@
 			<item value="0.0.1-SNAPSHOT"/>
 		</list>
 	</section>
-	<section name="MavenProjectImportWizardPage">
-		<list key="rootDirectory">
-			<item value="D:\repository\taotao\taotao-manager"/>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="taotao-search-service"/>
+			<item value="taotao-search-interface"/>
+			<item value="taotao-content-service"/>
+			<item value="taotao-content-interface"/>
+			<item value="taotao-manager-service"/>
+			<item value="taotao-manager-interface"/>
+			<item value="taotao-manager-pojo"/>
+			<item value="taotao-manager-dao"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -74,14 +78,9 @@
 			<item value="[name]"/>
 		</list>
 	</section>
-	<section name="MavenModuleWizardParentPage">
-		<list key="moduleName">
-			<item value="taotao-content-service"/>
-			<item value="taotao-content-interface"/>
-			<item value="taotao-manager-service"/>
-			<item value="taotao-manager-interface"/>
-			<item value="taotao-manager-pojo"/>
-			<item value="taotao-manager-dao"/>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\repository\taotao\taotao-manager"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -99,6 +98,11 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="taotao-search-web"/>
+			<item value="taotao-parent"/>
+			<item value="taotao-search-service"/>
+			<item value="taotao-search"/>
+			<item value="taotao-search-interface"/>
 			<item value="taotao-content-service"/>
 			<item value="taotao-content"/>
 			<item value="taotao-content-interface"/>

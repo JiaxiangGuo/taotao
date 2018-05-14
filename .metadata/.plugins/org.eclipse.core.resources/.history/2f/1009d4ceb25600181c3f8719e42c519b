@@ -1,0 +1,7 @@
+package com.taotao.search.mapper;
+
+import java.util.List;
+
+public interface SearchItemMapper {
+
+}

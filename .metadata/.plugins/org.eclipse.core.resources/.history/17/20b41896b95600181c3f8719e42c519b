@@ -1,0 +1,14 @@
+package com.taotao.search.service.impl;
+
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.search.service.SearchItemService;
+
+public class SearchItemServiceImpl implements SearchItemService {
+
+	@Override
+	public TaotaoResult importItemsToIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

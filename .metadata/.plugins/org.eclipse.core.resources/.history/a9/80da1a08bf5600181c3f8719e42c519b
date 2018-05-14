@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<div>
+	 <a class="easyui-linkbutton">一键导入商品到索引库</a>
+</div>
+<script type="text/javascript">
+$.post("/content/category/create",{parentId:node.parentId,name:node.text},function(data){
+	if(data.status == 200){
+		_tree.tree("update",{
+			target : node.target,
+			id : data.data.id
+		});
+	}else{
+		$.messager.alert('提示','创建'+node.text+' 分类失败!');
+	}
+});
+</script>
