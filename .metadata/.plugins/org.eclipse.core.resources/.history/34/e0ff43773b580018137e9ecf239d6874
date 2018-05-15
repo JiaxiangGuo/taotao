@@ -1,0 +1,35 @@
+package com.taotao.search.listener;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.taotao.common.pojo.SearchItem;
+import com.taotao.search.mapper.SearchItemMapper;
+import com.taotao.utils.JsonUtils;
+/**
+ * 监听商品添加事件,同步索引库
+ * @author Guojiaxiang
+ *
+ */
+public class MyMessageListener implements MessageListener{
+	@Autowired
+	private SearchItemMapper searchItemMapper;
+	
+	public void onMessage(Message message) {
+		//接收到消息
+		TextMessage textMessage = (TextMessage) message;
+		try {
+			String id = textMessage.getText();
+			long itemId = Long.parseLong(id);
+			SearchItem item = searchItemMapper.getItemById(itemId);
+			String itemJson = JsonUtils.objectToJson(item);
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

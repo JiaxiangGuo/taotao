@@ -1,0 +1,30 @@
+package com.taotao.search.listener;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.taotao.search.mapper.SearchItemMapper;
+/**
+ * 监听商品添加事件
+ * @author Guojiaxiang
+ *
+ */
+public class MyMessageListener implements MessageListener{
+	@Autowired
+	private SearchItemMapper searchItemMapper;
+	
+	public void onMessage(Message message) {
+		//接收到消息
+		TextMessage textMessage = (TextMessage) message;
+		try {
+			String id = textMessage.getText();
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
