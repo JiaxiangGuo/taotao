@@ -48,6 +48,10 @@ public class ItemServiceImpl implements ItemService {
 		TbItem item = itemMapper.selectByPrimaryKey(Long.parseLong(id));
 		return TaotaoResult.ok(item);
 	}
+	public TbItem getItemById1(String id) {
+		TbItem item = itemMapper.selectByPrimaryKey(Long.parseLong(id));
+		return item;
+	}
 	
 	/*
 	 * 通过id获取商品详情
@@ -55,6 +59,10 @@ public class ItemServiceImpl implements ItemService {
 	public TaotaoResult getItemDescById(String id) {
 		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(Long.parseLong(id));
 		return TaotaoResult.ok(itemDesc);
+	}
+	public TbItemDesc getItemDescById1(String id) {
+		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(Long.parseLong(id));
+		return itemDesc;
 	}
 	
 	

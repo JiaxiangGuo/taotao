@@ -1,0 +1,48 @@
+package com.taotao.item.listener;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.item.pojo.Item;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
+import com.taotao.service.ItemService;
+
+public class ItemAddMessageListener implements MessageListener {
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private FreeMarkerConfigurer freeMarkerConfigurer;
+	
+	@Override
+	public void onMessage(Message message) {
+		//从消息中取商品id
+		TextMessage textMessage = (TextMessage) message;
+		String itemId;
+		try {
+			itemId = textMessage.getText();
+			//根据商品id查询商品信息及商品描述
+			TaotaoResult itemById = itemService.getItemById(itemId);
+			Item item = new Item((Item)itemById.getData());
+			TaotaoResult itemDescById = itemService.getItemDescById(itemId);
+			TbItemDesc itemDesc = (TbItemDesc) itemDescById.getData();
+			//使用freemarker生成静态页面
+			freeMarkerConfigurer
+			//加载模板对象
+			
+			//准备模板需要的数据
+			//指定输出的目录及文件名
+			//生成静态页面
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

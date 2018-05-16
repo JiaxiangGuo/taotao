@@ -1,0 +1,21 @@
+package com.taotao.item.listener;
+
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+public class ItemAddMessageListener implements MessageListener {
+
+	@Override
+	public void onMessage(Message message) {
+		//从消息中取商品id
+		TextMessage itemId = (TextMessage) message;
+		//根据商品id查询商品信息及商品描述
+		//使用freemarker生成静态页面
+		//加载模板对象
+		//准备模板需要的数据
+		//指定输出的目录及文件名
+		//生成静态页面
+	}
+
+}

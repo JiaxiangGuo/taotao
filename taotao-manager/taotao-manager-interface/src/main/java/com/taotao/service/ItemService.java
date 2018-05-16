@@ -12,5 +12,6 @@ public interface ItemService {
 	TaotaoResult addItem(TbItem item, String desc);
 	TaotaoResult updateItem(TbItem item, String desc);
 	TaotaoResult changeItemStatus(String[] ids, int status);
-	
+	TbItem getItemById1(String id);
+	TbItemDesc getItemDescById1(String id);
 }
